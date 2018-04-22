@@ -9,8 +9,8 @@ allprojects {
 ext {
     //Android
     androidApplicationId = 'pl.ipebk.schibsted'
-    androidVersionCode = 1
-    androidVersionName = "0.0.1"
+    androidVersionCode = readVersionCode()
+    androidVersionName = readVersionName()
     androidBuildToolsVersion = "27.0.3"
     androidMinSdkVersion = 16
     androidTargetSdkVersion = 27
