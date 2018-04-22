@@ -1,0 +1,29 @@
+apply plugin: 'kotlin'
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+dependencies {
+    def mobileDependencies = rootProject.ext.mobileDependencies
+
+    implementation project(":data")
+
+    implementation mobileDependencies.kotlin
+    implementation mobileDependencies.rxjava
+    implementation mobileDependencies.gson
+    implementation mobileDependencies.okHttp
+    implementation mobileDependencies.okHttpLogger
+    implementation mobileDependencies.okLog
+    implementation mobileDependencies.retrofit
+    implementation mobileDependencies.retrofitConverter
+    implementation mobileDependencies.retrofitAdapter
+    implementation mobileDependencies.javaxInject
+    implementation mobileDependencies.javaxAnnotation
+
+    // assertion
+    testImplementation mobileDependencies.junit
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

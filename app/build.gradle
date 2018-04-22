@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.androidCompileSdkVersion
+    buildToolsVersion globalConfiguration.androidBuildToolsVersion
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    defaultConfig {
+        applicationId globalConfiguration.androidApplicationId
+        minSdkVersion globalConfiguration.androidMinSdkVersion
+        targetSdkVersion globalConfiguration.androidTargetSdkVersion
+        versionCode globalConfiguration.androidVersionCode
+        versionName globalConfiguration.androidVersionName
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    signingConfigs {
+        release
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            testCoverageEnabled true
+        }
+        release {
+            applicationIdSuffix '.release'
+            signingConfig signingConfigs.release
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDir 'src/unitTests/kotlin'
+        test.java.srcDir 'src/androidTests/kotlin'
+    }
+
+    lintOptions {
+        warningsAsErrors false
+        abortOnError true
+        lintConfig file("lint.xml")
+    }
+
+    // Show all test output in the command line!
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            exceptionFormat 'full'
+        }
+    }
+}
+
+repositories {
+    jcenter()
+    google()
+}
+
+dependencies {
+    def mobileDependencies = rootProject.ext.mobileDependencies
+
+    implementation project(":remote")
+    implementation project(":data")
+    implementation project(":cache")
+    implementation project(":domain")
+
+    // Kotlin
+    implementation mobileDependencies.kotlin
+
+    // Google Support Libraries
+    implementation mobileDependencies.support
+    implementation mobileDependencies.supportFragment
+    implementation mobileDependencies.appcompat
+    implementation mobileDependencies.design
+    implementation mobileDependencies.recyclerView
+    implementation mobileDependencies.constraintLayout
+
+    // RxJava
+    implementation mobileDependencies.rxjava
+    implementation mobileDependencies.rxandroid
+    implementation mobileDependencies.rxbinding
+
+    // Dagger 2
+    kapt mobileDependencies.daggerCompiler
+    implementation mobileDependencies.dagger
+
+    // Retrofit
+    implementation mobileDependencies.retrofit
+    implementation mobileDependencies.retrofitConverter
+    implementation mobileDependencies.retrofitAdapter
+
+    // logs
+    implementation mobileDependencies.pine
+
+    // image downloading
+    implementation mobileDependencies.picasso
+    implementation mobileDependencies.rxNetwork
+
+    // Unit Testing
+    testImplementation mobileDependencies.junit
+    testImplementation mobileDependencies.mockitoTwo
+}

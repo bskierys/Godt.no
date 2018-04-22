@@ -1,0 +1,91 @@
+apply from: 'buildsystem/git-version.gradle'
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    //Android
+    androidApplicationId = 'pl.ipebk.schibsted'
+    androidVersionCode = 1
+    androidVersionName = "0.0.1"
+    androidBuildToolsVersion = "27.0.3"
+    androidMinSdkVersion = 16
+    androidTargetSdkVersion = 27
+    androidCompileSdkVersion = 27
+
+    //// Libraries
+    // Android
+    androidSupportVersion = '27.0.2'
+    constraintLayoutVersion = '1.0.2'
+    // RxJava
+    rxJavaVersion = '2.1.10'
+    rxAndroidVersion = '2.0.2'
+    rxBindingVersion = '2.1.1'
+    rxSchedulerRuleVersion = '1.0.2'
+    rxDelayVersion = '0.5.0'
+    // Dagger
+    daggerVersion = '2.8'
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+    // Retrofit
+    retrofitVersion = '2.3.0'
+    okLogVersion = '2.3.0'
+    // Json
+    gsonVersion = '2.8.1'
+    // Logs
+    pineVersion = '0.2.0'
+    // Networking
+    picassoVersion = '2.5.2'
+    okhttpVersion = '3.9.1'
+    rxNetworkVersion = '0.12.3'
+    // Testing
+    junitVersion = '4.12'
+    mockitoTwoVersion = '2.15.0'
+
+    mobileDependencies = [
+            // Android
+            kotlin           : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
+            appcompat        : "com.android.support:appcompat-v7:${androidSupportVersion}",
+            support          : "com.android.support:support-v4:${androidSupportVersion}",
+            supportFragment  : "com.android.support:support-fragment:${androidSupportVersion}",
+            design           : "com.android.support:design:${androidSupportVersion}",
+            recyclerView     : "com.android.support:recyclerview-v7:${androidSupportVersion}",
+            constraintLayout : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+
+            // RxJava
+            rxjava           : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxandroid        : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxbinding        : "com.jakewharton.rxbinding2:rxbinding:${rxBindingVersion}",
+
+            // Dagger
+            daggerCompiler   : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger           : "com.google.dagger:dagger:${daggerVersion}",
+            javaxAnnotation  : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject      : "javax.inject:javax.inject:${javaxInjectVersion}",
+
+            // Retrofit
+            retrofit         : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+
+            // json
+            gson             : "com.google.code.gson:gson:${gsonVersion}",
+
+            // logs
+            pine             : "com.github.bskierys.pine:pine:${pineVersion}",
+
+            // networking
+            picasso          : "com.squareup.picasso:picasso:${picassoVersion}",
+            okHttp           : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+            okHttpLogger     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
+            okLog            : "com.github.simonpercic:oklog3:${okLogVersion}",
+            rxNetwork        : "com.github.pwittchen:reactivenetwork-rx2:${rxNetworkVersion}",
+
+            // Unit test dependencies
+            junit            : "junit:junit:${junitVersion}",
+            mockitoTwo       : "org.mockito:mockito-core:${mockitoTwoVersion}"
+    ]
+}

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Godt.no</string>
+    <string name="ingredients_prefix" formatted="false">Ingredients: %s</string>
+    <string name="loading">Please wait. Loading app data&#8230;</string>
+    <string name="error">An error occurred. Could not load data</string>
+    <string name="search_hint">Name or ingredient&#8230;</string>
+
+    <string name="preview_description" translatable="false">Matblogger Trine Sandberg deler her sin oppskrift p\u00e5
+        en enkel og god sitronterte som har v\u00e6rt popul\u00e6r b\u00e5de blant Sandbergs lesere, og familie og venner som har f\u00e5tt den servert.\u003Cbr \/\u003E\r\n \u2013 Terten er veldig</string>
+    <string name="preview_title" translatable="false">Sitronterte av Trine Sandberg</string>
+    <string name="preview_ingredients" translatable="false">Ingredients: salt, water, sand</string>
+</resources>
